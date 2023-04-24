@@ -1,3 +1,4 @@
+# code from groom
 class HashOpenAddr:
     def __init__(self, size=10):
         self.size = size
