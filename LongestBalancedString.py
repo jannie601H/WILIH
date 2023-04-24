@@ -58,4 +58,4 @@ print(solve(A))
 # elif dequeue의 front, back에 모두 m 이 있다면 ? 둘 중 아무거나 pop해도 된다
 # dequeue 안에 0, 1의 개수가 같아지면 dequeue의 길이 출력
 
-# 
+# ##
