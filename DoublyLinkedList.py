@@ -166,19 +166,18 @@ class DoublyLinkedList:
     ### total 6 link updated
 		return back_lst
 
+	def reverseNextLink(self):
+		a, b = None, self.head
+		while b:
+			c = b.next
+			b.next = a
+			a = b
+			b = c
+		self.head = a
 
 L = DoublyLinkedList()
 for i in range(10):
 	L.pushFront(i)
 print(L)
-M = DoublyLinkedList()
-for i in range(10,20):
-	M.pushFront(i)
-
-print(M)
-
-L.join(M)
-print(L)
-
-print(L.split(L.search(0)))
+L.reverseNextLink()
 print(L)
