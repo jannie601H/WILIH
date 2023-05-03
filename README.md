@@ -1,2 +1,1 @@
-# Data_Structure
-Data Structure with Python
+# What I learned in HUFS
