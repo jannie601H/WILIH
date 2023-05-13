@@ -1,14 +1,40 @@
+def cntPre(t, node):
+    if node != 0:
+        t += 1
+        if left[node] != 0:
+            t = cntPre(t, left[node])
+        if right[node] != 0:
+            t = cntPre(t, right[node])
+    
+    return t
+
 def preorder(v): # return visited sequence of v by preorder
     # # preorder: 탐색할 때 print
     cnt = 1
     cur = root
-    if left[cur]: # left child exists!
-        cur = 
+    
+    if cur != 0:
+        cnt += 1
+        if left[cur] != 0:
+            cur = left[cur]
+        if right[cur] != 0:
+            cur = right[cur]
 
+    return cnt
 
 def postorder(v): # return visited sequence of v by postorder
     # postorder: left, right 다찍고 print
+    cnt = 1
+    cur = root
+    
+    if cur != 0:
+        if left[cur] != 0:
+            cur = left[cur]
+        if right[cur] != 0:
+            cur = right[cur]
+        cnt += 1
 
+    return cnt
 
 def depth(v): # return depth of v
     dep = 0
@@ -18,10 +44,10 @@ def depth(v): # return depth of v
 
     return dep
 
-def is_ancestor(u, v): # if u is ancestor of v -> return True / else return False
+# def is_ancestor(u, v): # if u is ancestor of v -> return True / else return False
     
 
-def lca(u, v):
+# def lca(u, v):
     
 
 # 입력 처리 부분 (여기에)
@@ -36,7 +62,7 @@ for _ in range(n):
     right[v] = r
 
 # 전처리 코드 부분 (여기에)
-for v in range(1, n+1): # available only if input key is sequenced
+for v in range(1, n+1): # available only if input data key is sequenced / else input v list needed
     p = 0 # instant parent node
     # update parent node of v if any node has v as a child
     for i, node in enumerate(left):
