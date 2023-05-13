@@ -1,12 +1,18 @@
-def preorder(v):
-    
+def preorder(v): # return visited sequence of v by preorder
+    # # preorder: 탐색할 때 print
+    cnt = 1
+    cur = root
+    if left[cur]: # left child exists!
+        cur = 
 
-def postorder(v):
-    
+
+def postorder(v): # return visited sequence of v by postorder
+    # postorder: left, right 다찍고 print
+
 
 def depth(v): # return depth of v
     dep = 0
-    while parent[v] != None: # follow parent until parent is root
+    while parent[v] != 0: # follow parent until parent is root
         v = parent[v]
         dep += 1
 
@@ -20,32 +26,29 @@ def lca(u, v):
 
 # 입력 처리 부분 (여기에)
 n = int(input())
-parent = [None] * n
-left = [None] * n
-right = [None] * n
+parent = [0] * (n+1)
+left = [0] * (n+1)
+right = [0] * (n+1)
 
 for _ in range(n):
-    v, l, r = tuple(map(int, input()))
+    v, l, r = tuple(map(int, input().split()))
     left[v] = l
     right[v] = r
-    # how do i find parent of v?
-    p = None # instant parent node
-    # update parent node of v if any node has v as a child
-    for i in left:
-        if i == v:
-            p = i
-    for i in right:
-        if i == v:
-            p = i
-
-    if p == None:
-        root = v # if p == None, v is root!
-    parent[v] = p
-
-
-
 
 # 전처리 코드 부분 (여기에)
+for v in range(1, n+1): # available only if input key is sequenced
+    p = 0 # instant parent node
+    # update parent node of v if any node has v as a child
+    for i, node in enumerate(left):
+        if node == v:
+            p = i
+    for i, node in enumerate(right):
+        if node == v:
+            p = i
+
+    if p == 0:
+        root = v # if p == 0, v is root!
+    parent[v] = p
 
 # 
 # 명령 처리 부분으로 아래는 수정 하지 말 것!
