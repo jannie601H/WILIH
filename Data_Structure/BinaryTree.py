@@ -4,10 +4,15 @@ def preorder(v):
 def postorder(v):
     
 
-def depth(v):
-    
+def depth(v): # return depth of v
+    dep = 0
+    while parent[v] != None: # follow parent until parent is root
+        v = parent[v]
+        dep += 1
 
-def is_ancestor(u, v):
+    return dep
+
+def is_ancestor(u, v): # if u is ancestor of v -> return True / else return False
     
 
 def lca(u, v):
@@ -33,7 +38,9 @@ for _ in range(n):
         if i == v:
             p = i
 
-    parent[v] = p # if p == None, v is root!
+    if p == None:
+        root = v # if p == None, v is root!
+    parent[v] = p
 
 
 
