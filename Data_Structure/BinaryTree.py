@@ -15,7 +15,27 @@ def lca(u, v):
 
 # 입력 처리 부분 (여기에)
 n = int(input())
-v, l, r = tuple(map(int, input()))
+parent = [None] * n
+left = [None] * n
+right = [None] * n
+
+for _ in range(n):
+    v, l, r = tuple(map(int, input()))
+    left[v] = l
+    right[v] = r
+    # how do i find parent of v?
+    p = None # instant parent node
+    # update parent node of v if any node has v as a child
+    for i in left:
+        if i == v:
+            p = i
+    for i in right:
+        if i == v:
+            p = i
+
+    parent[v] = p # if p == None, v is root!
+
+
 
 
 # 전처리 코드 부분 (여기에)
