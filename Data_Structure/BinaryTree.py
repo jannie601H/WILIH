@@ -1,39 +1,41 @@
-def cntPre(t, node):
-    if node != 0:
-        t += 1
-        if left[node] != 0:
-            t = cntPre(t, left[node])
-        if right[node] != 0:
-            t = cntPre(t, right[node])
-    
-    return t
-
 def preorder(v): # return visited sequence of v by preorder
-    # # preorder: 탐색할 때 print
+    # preorder: 탐색할 때 print
+    # return cntPre(0, root, v) # recursion
+    # 방문하는 것이 아닌 counting 해야함으로 비재귀 DFS 구현?
+    curr = root
     cnt = 1
-    cur = root
-    
-    if cur != 0:
-        cnt += 1
-        if left[cur] != 0:
-            cur = left[cur]
-        if right[cur] != 0:
-            cur = right[cur]
+    stack = [] # need to visit -> stack에 right left 순으로 넣고 다음 방문
 
+    while curr != v:
+        cnt += 1
+        if right[curr] != 0:
+            stack.append(right[curr])
+        if left[curr] != 0:
+            stack.append(left[curr])
+        if stack:
+            curr = stack.pop()
+        else: # 모두 탐색 완료
+            break
+        
     return cnt
 
 def postorder(v): # return visited sequence of v by postorder
     # postorder: left, right 다찍고 print
+    curr = root
     cnt = 1
-    cur = root
-    
-    if cur != 0:
-        if left[cur] != 0:
-            cur = left[cur]
-        if right[cur] != 0:
-            cur = right[cur]
-        cnt += 1
+    stack = [] # need to visit -> stack에 right left 순으로 넣고 다음 방문
 
+    while curr != v:
+        if right[curr] != 0:
+            stack.append(right[curr])
+        if left[curr] != 0:
+            stack.append(left[curr])
+        if stack:
+            curr = stack.pop()
+            cnt += 1
+        else: # 모두 탐색 완료
+            break
+        
     return cnt
 
 def depth(v): # return depth of v
