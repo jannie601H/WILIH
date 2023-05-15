@@ -51,10 +51,17 @@ def depth(v): # return depth of v
 
     return dep
 
-# def is_ancestor(u, v): # if u is ancestor of v -> return True / else return False
+def is_ancestor(u, v): # if u is ancestor of v -> return True / else return False
+    curr = v
+    while parent[curr] != 0:
+        if curr == u:
+            return True
+        curr = parent[curr]
+    return False
     
 
-# def lca(u, v):
+def lca(u, v):
+    return 0
     
 
 # 입력 처리 부분 (여기에)
