@@ -61,7 +61,18 @@ def is_ancestor(u, v): # if u is ancestor of v -> return True / else return Fals
     
 
 def lca(u, v):
-    return 0
+    uDep = depth(u)
+    vDep = depth(v)
+    if vDep > uDep: # u is same or lower than v
+        u, v = v, u
+        uDep, vDep = vDep, uDep
+    while uDep > vDep: # make u, v at same height
+        u = parent[u]
+        uDep -= 1
+    while u != v:
+        u = parent[u]
+        v = parent[v]
+    return u
     
 
 # 입력 처리 부분 (여기에)
