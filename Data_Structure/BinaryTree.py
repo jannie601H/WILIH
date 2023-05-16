@@ -53,12 +53,11 @@ def depth(v): # return depth of v
 
 def is_ancestor(u, v): # if u is ancestor of v -> return True / else return False
     curr = v
-    while parent[curr] != 0:
+    while curr != 0:
         if curr == u:
             return True
         curr = parent[curr]
     return False
-    
 
 def lca(u, v):
     uDep = depth(u)
@@ -80,14 +79,16 @@ n = int(input())
 parent = [0] * (n+1)
 left = [0] * (n+1)
 right = [0] * (n+1)
+v_lst = []
 
 for _ in range(n):
     v, l, r = tuple(map(int, input().split()))
     left[v] = l
     right[v] = r
+    v_lst.append(v)
 
 # 전처리 코드 부분 (여기에)
-for v in range(1, n+1): # available only if input data key is sequenced / else input v list needed
+for v in v_lst:
     p = 0 # instant parent node
     # update parent node of v if any node has v as a child
     for i, node in enumerate(left):
