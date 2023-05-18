@@ -1,7 +1,7 @@
 def preorder(v): # return visited sequence of v by preorder
     # preorder: 탐색할 때 print
     # 방문하는 것이 아닌 counting 해야함으로 비재귀 DFS 구현?
-    curr = root# edit
+    curr = root
     cnt = 1
     stack = [] # need to visit -> stack에 right left 순으로 넣고 다음 방문
 
