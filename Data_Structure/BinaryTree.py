@@ -1,4 +1,4 @@
-### issue 어느 부분에서 어느 상황에 infinite loop 에 빠지는지 찾아내야 함
+### issue 어느 부분에서 어느 상황에 infinite loop 에 빠지는지 찾아내야 함.
 def preorder(v): # return visited sequence of v by preorder
     # preorder: 탐색할 때 print
     # 방문하는 것이 아닌 counting 해야함으로 비재귀 DFS 구현?
