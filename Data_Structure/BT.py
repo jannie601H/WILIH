@@ -1,50 +1,22 @@
 ### issue 어느 부분에서 어느 상황에 infinite loop 에 빠지는지 찾아내야 함.
-def preorder(v): # return visited sequence of v by preorder
-    # preorder: 탐색할 때 print
-    # 방문하는 것이 아닌 counting 해야함으로 비재귀 DFS 구현?
-    curr = root
-    cnt = 1
-    stack = [] # need to visit -> stack에 right left 순으로 넣고 다음 방문
+def preorder(v, c=0, curr=root): # return visited sequence of v by preorder
+    c += 1
+    if curr == v:
+        return c
+    if left[curr] != 0:
+        preorder(v, c, curr)
+    if right[curr] != 0:
+        preorder(v, c, curr)
+    
 
-    while curr != v:
-        cnt += 1
-        if right[curr] != 0:
-            stack.append(right[curr])
-        if left[curr] != 0:
-            stack.append(left[curr])
-        if stack:
-            curr = stack.pop()
-        else: # visited all nodes
-            break
-        
-    return cnt
-
-def postorder(v): # return visited sequence of v by postorder
-    # postorder: left, right 다찍고 print
-    curr = root
-    cnt = 0
-    stack = [] # need to visit -> stack에 right left 순으로 넣고 다음 방문
-    visited = [] # visited node
-
-    while True:
-        stack.append(curr) # 한번 방문한 노드 left right 모두 방문한 후 다시 방문
-        visited.append(curr)
-        if right[curr] != 0:
-            stack.append(right[curr])
-        if left[curr] != 0:
-            stack.append(left[curr])
-        if stack:
-            curr = stack.pop()
-            while curr in visited: # if curr is visited once, count
-                cnt += 1
-                if curr == v: # node v counted
-                    return cnt
-                if stack:
-                    curr = stack.pop()
-                else:
-                    break
-        if not stack: # visited all nodes
-            break
+def postorder(v, c=0, curr=root): # return visited sequence of v by postorder
+    if curr == v:
+        return c
+    if left[curr] != 0:
+        postorder(v, c, curr)
+    if right[curr] != 0:
+        postorder(v, c, curr)
+    c += 1
 
 def depth(v): # return depth of v
     dep = 0
@@ -76,7 +48,6 @@ def lca(u, v):
         v = parent[v]
     return u
     
-
 # 입력 처리 부분 (여기에)
 n = int(input())
 parent = [0] * (n+1)
