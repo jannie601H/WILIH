@@ -1,22 +1,31 @@
 ### issue 어느 부분에서 어느 상황에 infinite loop 에 빠지는지 찾아내야 함.
-def preorder(v, c=0, curr=root): # return visited sequence of v by preorder
-    c += 1
-    if curr == v:
-        return c
+def pre(curr, v, seq): # return visited sequence of v by preorder
+    seq.append(curr)
     if left[curr] != 0:
-        preorder(v, c, curr)
+        pre(left[curr], v, seq)
     if right[curr] != 0:
-        preorder(v, c, curr)
-    
+        pre(right[curr], v, seq)
 
-def postorder(v, c=0, curr=root): # return visited sequence of v by postorder
-    if curr == v:
-        return c
+def preorder(v):
+    global root
+    seq = []
+    pre(root, v, seq)
+    return seq.index(v) + 1
+
+def post(curr, v, seq): # return visited sequence of v by postorder
     if left[curr] != 0:
-        postorder(v, c, curr)
+        post(left[curr], v, seq)
     if right[curr] != 0:
-        postorder(v, c, curr)
-    c += 1
+        post(right[curr], v, seq)
+    seq.append(v)
+    print(seq)
+
+def postorder(v):
+    global root
+    seq = []
+    post(root, v, seq)
+    print(seq)
+    return seq.index(v)
 
 def depth(v): # return depth of v
     dep = 0
