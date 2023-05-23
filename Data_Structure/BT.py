@@ -1,4 +1,4 @@
-### issue 어느 부분에서 어느 상황에 infinite loop 에 빠지는지 찾아내야 함.
+### 9, 12, 13, 16, 17 fail
 def pre(curr, v, seq): # return visited sequence of v by preorder
     seq.append(curr)
     if left[curr] != 0:
@@ -17,15 +17,13 @@ def post(curr, v, seq): # return visited sequence of v by postorder
         post(left[curr], v, seq)
     if right[curr] != 0:
         post(right[curr], v, seq)
-    seq.append(v)
-    print(seq)
+    seq.append(curr)
 
 def postorder(v):
     global root
     seq = []
     post(root, v, seq)
-    print(seq)
-    return seq.index(v)
+    return seq.index(v) + 1
 
 def depth(v): # return depth of v
     dep = 0
