@@ -21,15 +21,60 @@ class BST:
             self.preorder(v.right)
 
     def inorder(self, v):
+        if v != None:
+            self.inorder(v.left)
+            print(v.key, end=" ")
+            self.inorder(v.right)
 
     def postorder(self, v):
+        if v != None:
+            self.postorder(v.left)
+            self.postorder(v.right)
+            print(v.key, end=" ")
 
-    def find_loc(self, key):
+    def find_loc(self, key): # key 값이 있다면 해당 Node return / 없다면 삽입될 곳의 부모노드 return
+        curr = self.root
+        parent = None
+        while curr != None:
+            if key == curr.key:
+                return curr # key 값이 있으므로 해당 node return
+            if key < curr.key:
+                parent = curr
+                curr = curr.left
+            if key > curr.key:
+                parent = curr
+                curr = curr.right
+        return parent # key 값이 없으므로 삽입될 곳의 부모노드 return
 
-    def search(self, key):
+    def search(self, key): # key 값을 갖는 Node를 찾아 return 없다면 None return
+        node = self.find_loc(key)
+        if node.key == key:
+            return node
+        else:
+            return None
 
     def insert(self, key):
         # 노드들의 height 정보 update 필요
+        p = self.find_loc(key)
+        
+        if p == None or p.key != key:
+            insert = Node(key)
+            if p == None:
+                self.root = insert
+            else:
+                if p.key > key:
+                    p.left = insert
+                if p.key < key:
+                    p.right = insert
+                insert.parent = p
+
+        # height 정보 update
+        parent = insert.parent
+        curr_h = 0
+        while curr_h == curr.height:
+            curr.height += 1
+            curr = curr.parent
+            curr_h += 1
 
     def deleteByMerging(self, x):
         # 노드들의 height 정보 update 필요
