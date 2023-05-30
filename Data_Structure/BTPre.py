@@ -42,6 +42,7 @@ for i in range(n):
 	
 
 # 전처리 코드 부분 (여기에)
+# 전처리를 통해 Preorder, Postorder list를 생성한다.
 root = [i + 1 for i in range(len(parent)) if parent[i] == 0][0]
 pre = [0] * n
 post = [0] * n
