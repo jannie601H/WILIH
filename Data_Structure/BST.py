@@ -127,6 +127,13 @@ class BST:
 
     def deleteByCopying(self, x):
         # 노드들의 height 정보 update 필요
+        p = x.parent
+        l = x.left
+        r = x.right
+        c = None # x자리에 올 Node
+        s = None # 균형이 깨질 가능성이 있는 node
+        
+        
 
     def height(self, x): # 노드 x의 height 값을 리턴
         if x == None: return -1
