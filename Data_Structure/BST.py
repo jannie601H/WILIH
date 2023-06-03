@@ -76,8 +76,54 @@ class BST:
             curr = curr.parent
             curr_h += 1
 
+    def heightAdjust(self, x, c):
+        if x != None:
+            x.height += c
+            self.preorder(x.left)
+            self.preorder(x.right)
+
     def deleteByMerging(self, x):
         # 노드들의 height 정보 update 필요
+        p = x.parent
+        l = x.left
+        r = x.right
+        c = None # x 자리에 올 Node
+        s = None # 균형이 깨질 가능성이 있는 Node
+        cnt = 0 # m 까지의 depth
+        
+        if l == None: # x 의 left child가 없는 경우 x 자리에 right child가 옴
+            c = r
+            s = p
+        else:
+            m = l # left child sub tree의 가장 오른쪽 child node
+            c = l
+            while m.right: # m 탐색
+                m = m.right
+                cnt += 1
+            m.right = r
+            if r:
+                r.parent = m
+            s = m
+        if self.root == x: # delete 하는 node가 root 인 경우
+            if c:
+                c.parent = None
+            self.root = c
+        else:
+            if p.left == x:
+                p.left = c
+            else:
+                p.right = c
+            if c:
+                c.parent = p
+        self.size -= 1
+
+        # height 정보 update
+        if l:
+            self.heightAdjust(l, -1)
+        if r:
+            self.heightAdjust(r, cnt-1)
+
+        return s
 
     def deleteByCopying(self, x):
         # 노드들의 height 정보 update 필요
