@@ -1,5 +1,5 @@
 def preorder(v):
-	return pre[v-1]
+	return pre[v-1] # Preprocessing 한 Preorder list 를 이용한다
 
 def postorder(v):
 	return post[v-1]
