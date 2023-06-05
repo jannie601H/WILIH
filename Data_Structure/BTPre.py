@@ -2,7 +2,7 @@ def preorder(v):
 	return pre[v-1] # Preprocessing 한 Preorder list 를 이용한다
 
 def postorder(v):
-	return post[v-1]
+	return post[v-1] # Preprocessing 한 postorder list 를 이용한다
 
 def depth(v):
 	return depth_pre[v - 1]
