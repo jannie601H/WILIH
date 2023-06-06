@@ -5,7 +5,7 @@ def postorder(v):
 	return post[v-1] # Preprocessing 한 postorder list 를 이용한다
 
 def depth(v):
-	return depth_pre[v - 1]
+	return depth_pre[v - 1] 
 
 def is_ancestor(u, v):
 	if u == v:
