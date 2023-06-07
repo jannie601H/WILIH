@@ -32,7 +32,7 @@ class BST:
 			self.postorder(v.right)
 			print(v.key, end=' ')
 		
-	def recal_height(self, v):
+	def recal_height(self, v): # generated function (recal_height)
 		if v != None:
 			l = self.recal_height(v.left) 
 			r = self.recal_height(v.right)
