@@ -82,7 +82,7 @@ class BST:
 		self.recal_height(self.root)
 		return n
 	
-	def right_node(self, x):
+	def right_node(self, x): # generated function (right_node)
 		while x.right:
 			x = x.right
 		return x
