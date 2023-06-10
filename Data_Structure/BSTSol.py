@@ -87,7 +87,7 @@ class BST:
 			x = x.right
 		return x
 	
-	def left_node(self, x):
+	def left_node(self, x): # generated function (left_node)
 		while x.left:
 			x = x.left
 		return x
